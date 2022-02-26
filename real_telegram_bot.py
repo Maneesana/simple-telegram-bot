@@ -1,6 +1,4 @@
-from ast import Call
-import os
-from email import message
+
 from telegram import ReplyKeyboardMarkup, Update
 import telegram
 from telegram.ext import (
@@ -15,8 +13,8 @@ from datetime import datetime
 from datetime import timedelta
 import logging
 
-accessToken='5230562427:AAE5yDe9IYD4-5lk33z6k2bU6422ytrl9Qo'
-PORT = int(os.environ.get('PORT', '8443'))
+accessToken='YOUR_TOKEN'
+
 
 
 logging.basicConfig(level=logging.INFO,format="%(asctime)s --- %(name)s --- %(levelname)s --- %(message)s ")
@@ -203,13 +201,6 @@ unknown_handler = MessageHandler(Filters.command, unknown)
 dp.add_handler(unknown_handler)
 # command --/generate-code
 #main function starts here
-
-updater.start_webhook(listen="0.0.0.0",
-                          port=PORT,
-                          url_path=accessToken)
-                          
-# updater.bot.set_webhook(url=settings.WEBHOOK_URL)
-updater.bot.set_webhook("simple-telegram-bot" + accessToken)
 
 
 updater.start_polling()
